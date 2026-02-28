@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { T } from './Lang'
+import logoSrc from '/assets/logo.png?url'
 
 const NAV_ITEMS = [
   { href: '#home',            en: 'Home',            he: 'בית' },
@@ -57,7 +58,7 @@ export default function Header({ lang, onLangChange }) {
     <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="container">
         <div className="brand">
-          <img src="/assets/logo.png" alt="MamreVoice" className="logo" />
+          <img src={logoSrc} alt="MamreVoice" className="logo" />
           <span className="brand-text">MamreVoice</span>
         </div>
 
