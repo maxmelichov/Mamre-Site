@@ -118,13 +118,15 @@ export default function Comparison({ lang }) {
         <div className="comparison-note">
           {isHe ? (
             <p lang="he">
-              <strong>הערה:</strong> Zonos אינו כלול בדוגמאות השמע למעלה — הפלט שלו על דוגמאות אלו כמעט זהה לזה של Mamre,
-              מכיוון ש-Mamre מבוסס ישירות על Zonos. <a href="#metrics">טבלת המדדים למטה</a> מכמתת את ההבדלים.
+              <strong>למה Zonos לא מופיע בטבלה?</strong> מכיוון ש-Mamre מבוסס ישירות על Zonos (עם החלפת Mamba ב-DiffMamba),
+              השמע יישמע כמעט זהה באוזן אנושית. ההבדלים האמיתיים ניתנים למדידה — ראו את <a href="#metrics">טבלת המדדים למטה</a> שמראה
+              שיפורים של עד 44% בדיוק.
             </p>
           ) : (
             <p>
-              <strong>Note:</strong> Zonos is not included in the audio samples above — its output on these examples is nearly identical to Mamre's,
-              since Mamre is directly based on Zonos. The <a href="#metrics">metrics table below</a> quantifies the differences.
+              <strong>Why isn't Zonos in this table?</strong> Since Mamre is built directly on top of Zonos (swapping Mamba for DiffMamba),
+              the audio sounds nearly identical to human ears. The real differences are measurable — see the <a href="#metrics">metrics table below</a> showing
+              up to 44% improvement in accuracy.
             </p>
           )}
         </div>

@@ -13,8 +13,8 @@ export default function Hero({ lang }) {
         <BiP
           className="sub"
           lang={lang}
-          en="MamreVoice is a cutting-edge text-to-speech and voice conversion system that brings human-like naturalness to synthetic speech. Built on advanced AI architecture, it delivers expressive, clear, and lifelike voice synthesis for applications ranging from accessibility tools to creative content generation."
-          he="MamreVoice הוא מערכת מתקדמת להמרת טקסט לדיבור והמרת קול המביאה טבעיות אנושית לדיבור סינתטי. הוא בנוי על ארכיטקטורה מתקדמת של בינה מלאכותית ומספק סינתזת קול ביטויית, ברורה וחיה עבור יישומים החל מכלי נגישות ועד יצירת תוכן יצירתי."
+          en="An improved Hebrew text-to-speech model. Mamre replaces the Mamba backbone in Zonos TTS with DiffMamba — delivering more accurate pronunciation, better stress placement, and natural-sounding speech."
+          he="מודל טקסט-לדיבור עברי משופר. Mamre מחליף את ליבת ה-Mamba במודל Zonos TTS ב-DiffMamba — ומספק הגייה מדויקת יותר, הדגשות טובות יותר, ודיבור טבעי."
         />
       </div>
     </section>

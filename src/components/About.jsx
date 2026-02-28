@@ -6,22 +6,73 @@ export default function About({ lang }) {
     <section className="about" id="about">
       <div className="container">
         <BiH level={2} lang={lang} en="About the Model" he="על המודל" />
+
+        {/* Zonos vs Mamre side-by-side explainer */}
+        <div className="diff-explainer">
+          <div className="diff-card diff-card--zonos">
+            <div className="diff-card__label">
+              {isHe ? '⬡ מודל בסיס' : '⬡ BASE MODEL'}
+            </div>
+            <h3 className="diff-card__title">Zonos TTS</h3>
+            {isHe ? (
+              <div className="diff-card__body" lang="he">
+                <p>מודל טקסט-לדיבור בקוד פתוח מבית <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zyphra</a> שמשתמש בארכיטקטורת <strong>Mamba</strong> (מודל מרחב מצבים) עם דיפוזיה ליצירת דיבור.</p>
+                <ul>
+                  <li>עיבוד רציף עם Mamba</li>
+                  <li>תמיכה בסיסית בעברית</li>
+                  <li>WER של 28% על טקסטים עבריים</li>
+                </ul>
+              </div>
+            ) : (
+              <div className="diff-card__body">
+                <p>An open-source text-to-speech model by <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zyphra</a> that uses <strong>Mamba</strong> (a state-space model architecture) with diffusion for speech generation.</p>
+                <ul>
+                  <li>Sequential processing with Mamba</li>
+                  <li>Basic Hebrew support</li>
+                  <li>28% WER on Hebrew text</li>
+                </ul>
+              </div>
+            )}
+          </div>
+
+          <div className="diff-card diff-card--mamre">
+            <div className="diff-card__label">
+              {isHe ? '✦ מודל משופר' : '✦ IMPROVED MODEL'}
+            </div>
+            <h3 className="diff-card__title">Mamre TTS</h3>
+            {isHe ? (
+              <div className="diff-card__body" lang="he">
+                <p>מחליף את ליבת ה-Mamba ב-<strong>DiffMamba</strong> — ארכיטקטורה חדשנית שמשלבת יעילות של מודלי מרחב מצבים עם יציבות של תהליכי דיפוזיה. התוצאה: דיבור מדויק וטבעי יותר.</p>
+                <div className="improvement-badges">
+                  <span className="improvement-badge improvement-badge--green">↓ 30% פחות שגיאות מילים</span>
+                  <span className="improvement-badge improvement-badge--green">↓ 44% פחות שגיאות תווים</span>
+                  <span className="improvement-badge improvement-badge--brand">↑ דיוק הדגש טוב יותר</span>
+                </div>
+              </div>
+            ) : (
+              <div className="diff-card__body">
+                <p>Replaces the Mamba core with <strong>DiffMamba</strong> — an architecture that combines state-space model efficiency with diffusion process stability. The result: more accurate and natural-sounding speech.</p>
+                <div className="improvement-badges">
+                  <span className="improvement-badge improvement-badge--green">↓ 30% fewer word errors</span>
+                  <span className="improvement-badge improvement-badge--green">↓ 44% fewer char errors</span>
+                  <span className="improvement-badge improvement-badge--brand">↑ Better stress accuracy</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
         <div className="model-grid">
           <div className="model-text">
             {isHe ? (
               <>
                 <p lang="he">
-                  MamreVoice מופעל על ידי DiffMamba, ארכיטקטורה חדשנית המשלבת את היעילות של מודלים של מרחב מצבים
-                  עם היציבות של תהליכי דיפוזיה. גישה היברידית זו מאפשרת סינתזת קול באיכות גבוהה עם עומס חישובי מופחת,
-                  המאפשר המרת קול וטקסט לדיבור בזמן אמת על חומרה מודרנית.
-                </p>
-                <p lang="he">
-                  המודל מצטיין בשימור פרוזודיה, שמירה על זהות הדובר, ויצירת דיבור טבעי במספר שפות,
-                  עם אופטימיזציה מיוחדת לעיבוד שפה עברית.
+                  <strong>מה זה DiffMamba?</strong> ארכיטקטורת DiffMamba מוסיפה שכבות דיפוזיה בתוך בלוקי Mamba עצמם,
+                  במקום להשתמש בהם בנפרד. זה מאפשר למודל ללמוד דפוסי דיבור עדינים יותר — כמו הדגשות,
+                  קצב, ואינטונציה — תוך שמירה על מהירות ויעילות.
                 </p>
                 <p className="muted small" lang="he">
-                  מבוסס על: <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zonos TTS</a> (עם DiffMamba במקום Mamba רגיל)
-                  · מאמר מחקר: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">מאמר DiffMamba</a>
+                  מאמר מחקר: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">מאמר DiffMamba</a>
                   · בלוקי DiffMamba: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">GitHub</a>
                 </p>
                 <p className="muted small" lang="he" style={{ marginTop: 8 }}>
@@ -34,17 +85,12 @@ export default function About({ lang }) {
             ) : (
               <>
                 <p>
-                  MamreVoice is powered by DiffMamba, an innovative architecture that combines the efficiency of state-space models
-                  with the stability of diffusion processes. This hybrid approach enables high-quality voice synthesis with reduced
-                  computational overhead, making real-time voice conversion and text-to-speech possible on modern hardware.
-                </p>
-                <p>
-                  The model excels in preserving prosody, maintaining speaker identity, and generating natural-sounding speech
-                  across multiple languages, with particular optimization for Hebrew language processing.
+                  <strong>What is DiffMamba?</strong> The DiffMamba architecture embeds diffusion layers inside the Mamba blocks themselves,
+                  rather than using them separately. This lets the model learn finer speech patterns — like stress placement,
+                  rhythm, and intonation — while maintaining speed and efficiency.
                 </p>
                 <p className="muted small">
-                  Based on: <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zonos TTS</a> (using DiffMamba instead of regular Mamba)
-                  · Research Paper: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">DiffMamba Paper</a>
+                  Research Paper: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">DiffMamba Paper</a>
                   · DiffMamba Blocks: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">GitHub</a>
                 </p>
                 <p className="muted small" style={{ marginTop: 8 }}>

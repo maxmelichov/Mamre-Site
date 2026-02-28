@@ -11,6 +11,14 @@
   --brand-strong: #3db8f0;
   --brand-soft: #88e5ff;
   --brand-dim: rgba(96, 212, 255, 0.1);
+  --accent-warm: #f0b860;
+  --accent-warm-strong: #e09830;
+  --accent-warm-soft: #ffd080;
+  --accent-warm-dim: rgba(240, 184, 96, 0.1);
+  --accent-green: #4ade80;
+  --accent-green-dim: rgba(74, 222, 128, 0.1);
+  --accent-red: #ff8c8c;
+  --accent-red-dim: rgba(255, 140, 140, 0.1);
   --border: #252938;
   --border-light: #2d3142;
   --border-subtle: #1e2230;
@@ -607,6 +615,111 @@ a:not(.nav-link):not(.chip):hover { text-decoration-color: var(--brand); }
 }
 .comparison-note p { margin: 0; line-height: 1.6; color: var(--text-secondary); }
 
+/* ── Mamre vs Zonos Explainer ───────────── */
+.diff-explainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.diff-card {
+  background: var(--gradient-panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.diff-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+.diff-card--zonos::before {
+  background: var(--muted-dark);
+}
+.diff-card--mamre::before {
+  background: var(--brand);
+}
+.diff-card--mamre {
+  border-color: rgba(96, 212, 255, 0.2);
+  box-shadow: 0 0 24px rgba(96, 212, 255, 0.05);
+}
+.diff-card__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.diff-card--zonos .diff-card__label { color: var(--muted); }
+.diff-card--mamre .diff-card__label { color: var(--brand-soft); }
+.diff-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.diff-card--zonos .diff-card__title { color: var(--text-secondary); }
+.diff-card--mamre .diff-card__title { color: var(--brand-soft); }
+.diff-card__body {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 15px;
+  margin: 0;
+}
+.diff-card__body ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+.diff-card__body li {
+  margin-bottom: 6px;
+}
+
+.diff-arrow {
+  display: none;
+}
+
+.improvement-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.improvement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.improvement-badge--green {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+.improvement-badge--brand {
+  background: var(--brand-dim);
+  color: var(--brand-soft);
+  border: 1px solid rgba(96,212,255,0.2);
+}
+
+@media (max-width: 768px) {
+  .diff-explainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
 .audio-fallback {
   font-size: 12px;
   color: var(--muted-dark);
@@ -744,6 +857,63 @@ a:not(.nav-link):not(.chip):hover { text-decoration-color: var(--brand); }
   background: linear-gradient(135deg, rgba(96,212,255,0.06), rgba(63,181,238,0.02));
   border: 1px solid rgba(96,212,255,0.15);
   border-radius: 12px;
+}
+
+/* ── Metrics Improvement Cards ──────────── */
+.metrics-improvements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.metric-improve-card {
+  background: var(--gradient-panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.metric-improve-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  opacity: 0.6;
+}
+.metric-improve-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-brand);
+}
+.metric-improve-card__value {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--accent-green);
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+.metric-improve-card__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-soft);
+  margin: 0 0 8px;
+}
+.metric-improve-card__desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .metrics-improvements {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Voice Conversion ───────────────────── */

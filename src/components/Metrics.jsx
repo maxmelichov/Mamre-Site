@@ -6,12 +6,12 @@ export default function Metrics({ lang }) {
     <section className="metrics-section" id="metrics">
       <div className="container">
         <div className="section-header">
-          <BiH level={2} lang={lang} en="Accuracy &amp; WER Metrics" he="מדדי דיוק ו-WER" />
+          <BiH level={2} lang={lang} en="Mamre vs Zonos: Accuracy Metrics" he="Mamre מול Zonos: מדדי דיוק" />
         </div>
         <p className="metrics-intro">
           {isHe
-            ? 'הערכה על TTS עברי עם מודעות לפונמות. WER ו-CER מודדים דיוק תעתיק — נמוך יותר עדיף. דיוק הדגש מודד הנחת הדגש הלקסיקלי הנכון — גבוה יותר עדיף.'
-            : 'Evaluation on Hebrew phoneme-aware TTS. WER (Word Error Rate) and CER (Character Error Rate) measure transcription accuracy; lower is better. Stress accuracy measures correct lexical stress placement; higher is better.'}
+            ? 'שני המודלים הוערכו על אותה קבוצת טקסטים עבריים. ההבדל היחיד בין Zonos ל-Mamre הוא החלפת בלוקי Mamba ב-DiffMamba. כל שאר הרכיבים — הנתונים, הפונמות, הקולות — זהים לחלוטין.'
+            : 'Both models were evaluated on the same Hebrew text set. The only difference between Zonos and Mamre is swapping Mamba blocks for DiffMamba blocks. Everything else — training data, phonemes, voices — is identical.'}
         </p>
         <div className="metrics-table-wrap">
           <table className="metrics-table">
@@ -19,17 +19,17 @@ export default function Metrics({ lang }) {
               <tr>
                 <th>{isHe ? 'מודל' : 'Model'}</th>
                 <th>{isHe ? 'דיוק (WER)' : 'Accuracy (WER)'}</th>
-                <th>WER</th>
-                <th>CER</th>
-                <th>{isHe ? 'דיוק הדגש' : 'Stress Accuracy'}</th>
-                <th>{isHe ? 'WER הדגש' : 'Stress WER'}</th>
+                <th>WER ↓</th>
+                <th>CER ↓</th>
+                <th>{isHe ? 'דיוק הדגש ↑' : 'Stress Accuracy ↑'}</th>
+                <th>{isHe ? 'WER הדגש ↓' : 'Stress WER ↓'}</th>
               </tr>
             </thead>
             <tbody>
               <tr className="metrics-row metrics-row--zonos">
                 <td className="metrics-model-name">
-                  <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">zonos-phonikud</a>
-                  <span className="metrics-lang-tag">Hebrew</span>
+                  <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zonos</a>
+                  <span className="metrics-lang-tag">Mamba</span>
                 </td>
                 <td>
                   <div className="metrics-bar-wrap">
@@ -49,8 +49,8 @@ export default function Metrics({ lang }) {
               </tr>
               <tr className="metrics-row metrics-row--mamre">
                 <td className="metrics-model-name">
-                  <a href="https://github.com/maxmelichov/Mamre-TTS" target="_blank" rel="noopener">mamre-phonikud</a>
-                  <span className="metrics-lang-tag metrics-lang-tag--brand">Hebrew</span>
+                  <a href="https://github.com/maxmelichov/Mamre-TTS" target="_blank" rel="noopener">Mamre</a>
+                  <span className="metrics-lang-tag metrics-lang-tag--brand">DiffMamba</span>
                 </td>
                 <td>
                   <div className="metrics-bar-wrap">
@@ -73,11 +73,41 @@ export default function Metrics({ lang }) {
         </div>
         <p className="metrics-note">
           {isHe ? (
-            <><strong>Mamre</strong> עולה על Zonos בכל המדדים — <strong>+8.3 נק'</strong> דיוק WER, CER <strong>נמוך ב-44%</strong>, ו<strong>+5.9 נק'</strong> דיוק הדגש.</>
+            <>↑ = גבוה יותר עדיף &nbsp; ↓ = נמוך יותר עדיף &nbsp;·&nbsp; <strong>WER</strong> = שיעור שגיאות מילים &nbsp;·&nbsp; <strong>CER</strong> = שיעור שגיאות תווים</>
           ) : (
-            <><strong>Mamre</strong> outperforms Zonos across all metrics — <strong>+8.3 pp</strong> WER accuracy, <strong>44% lower</strong> CER, and <strong>+5.9 pp</strong> stress accuracy.</>
+            <>↑ = higher is better &nbsp; ↓ = lower is better &nbsp;·&nbsp; <strong>WER</strong> = Word Error Rate &nbsp;·&nbsp; <strong>CER</strong> = Character Error Rate</>
           )}
         </p>
+
+        <div className="metrics-improvements">
+          <div className="metric-improve-card">
+            <p className="metric-improve-card__value">+8.3%</p>
+            <p className="metric-improve-card__label">{isHe ? 'דיוק WER' : 'WER Accuracy'}</p>
+            <p className="metric-improve-card__desc">
+              {isHe
+                ? 'יותר מילים מתועתקות נכון מהדיבור שנוצר'
+                : 'More words correctly transcribed from generated speech'}
+            </p>
+          </div>
+          <div className="metric-improve-card">
+            <p className="metric-improve-card__value">-44%</p>
+            <p className="metric-improve-card__label">{isHe ? 'שגיאות תווים' : 'Character Errors'}</p>
+            <p className="metric-improve-card__desc">
+              {isHe
+                ? 'פחות תווים שגויים — הגייה מדויקת יותר ברמת ההברה'
+                : 'Fewer wrong characters — more precise syllable-level pronunciation'}
+            </p>
+          </div>
+          <div className="metric-improve-card">
+            <p className="metric-improve-card__value">+5.9%</p>
+            <p className="metric-improve-card__label">{isHe ? 'דיוק הדגש' : 'Stress Accuracy'}</p>
+            <p className="metric-improve-card__desc">
+              {isHe
+                ? 'הדגשה לקסיקלית נכונה יותר — משפיע על טבעיות הצליל'
+                : 'Better lexical stress placement — directly affects how natural speech sounds'}
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   )
