@@ -2,11 +2,9 @@ import { useState, useEffect, useCallback } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
-import Story from './components/Story'
 import DemoVideo from './components/DemoVideo'
 import Comparison from './components/Comparison'
 import Metrics from './components/Metrics'
-import VoiceConversion from './components/VoiceConversion'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 
@@ -31,6 +29,23 @@ export default function App() {
     handleLangChange(lang)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  /* Scroll-reveal: every <section> fades in when it enters the viewport */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    )
+    document.querySelectorAll('section').forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div data-lang={lang}>
       <Header lang={lang} onLangChange={handleLangChange} />
@@ -38,11 +53,9 @@ export default function App() {
       <main>
         <Hero lang={lang} />
         <About lang={lang} />
-        <Story lang={lang} />
         <DemoVideo lang={lang} />
         <Comparison lang={lang} />
         <Metrics lang={lang} />
-        <VoiceConversion lang={lang} />
       </main>
       <Footer lang={lang} />
     </div>

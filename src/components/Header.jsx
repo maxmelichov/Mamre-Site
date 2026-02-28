@@ -6,7 +6,6 @@ const NAV_ITEMS = [
   { href: '#about',           en: 'About',           he: 'אודות' },
   { href: '#demo',            en: 'Demo',            he: 'הדגמה' },
   { href: '#comparison',      en: 'Comparison',      he: 'השוואה' },
-  { href: '#voice-conversion',en: 'Voice Conversion',he: 'המרת קול' },
   { href: '#metrics',         en: 'Metrics',         he: 'מדדים' },
 ]
 
@@ -58,7 +57,7 @@ export default function Header({ lang, onLangChange }) {
     <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="container">
         <div className="brand">
-          <img src="assets/logo.png" alt="MamreVoice" className="logo" />
+          <img src="/assets/logo.png" alt="MamreVoice" className="logo" />
           <span className="brand-text">MamreVoice</span>
         </div>
 
