@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="MamreVoice — a simple, clear and human text-to-speech experience.">
+    
+    <!-- Apple-specific meta tags for better iOS experience -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MamreVoice">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="apple-touch-startup-image" href="assets/logo.png">
+    
+    <title>MamreVoice — Text to Speech</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="./script.js"></script>
+  </head>
+  <body data-lang="en">
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <img src="assets/logo.png" alt="MamreVoice" class="logo">
+          <span class="brand-text">
+            <span class="lang-en">MamreVoice</span>
+            <span class="lang-he">MamreVoice</span>
+          </span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="main-nav" id="mainNav">
+          <a href="#home" class="nav-link">
+            <span class="lang-en">Home</span>
+            <span class="lang-he">בית</span>
+          </a>
+          <a href="#about" class="nav-link">
+            <span class="lang-en">About</span>
+            <span class="lang-he">אודות</span>
+          </a>
+          <a href="#demo" class="nav-link">
+            <span class="lang-en">Demo</span>
+            <span class="lang-he">הדגמה</span>
+          </a>
+          <a href="#comparison" class="nav-link">
+            <span class="lang-en">Comparison</span>
+            <span class="lang-he">השוואה</span>
+          </a>
+          <a href="#voice-conversion" class="nav-link">
+            <span class="lang-en">Voice Conversion</span>
+            <span class="lang-he">המרת קול</span>
+          </a>
+          <a href="#metrics" class="nav-link">
+            <span class="lang-en">Metrics</span>
+            <span class="lang-he">מדדים</span>
+          </a>
+        </nav>
+        <div class="lang-switch" aria-label="Language switcher">
+          <button id="btn-lang-en" class="chip active" data-lang="en" aria-pressed="true">EN</button>
+          <button id="btn-lang-he" class="chip" data-lang="he" aria-pressed="false">עב</button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <main>
+      <!-- Welcome Section -->
+      <section class="hero" id="home">
+        <div class="container">
+          <h1 class="lang-en">Welcome to MamreVoice</h1>
+          <h1 class="lang-he" lang="he">ברוכים הבאים ל-MamreVoice</h1>
+          <p class="sub lang-en">
+            MamreVoice is a cutting-edge text-to-speech and voice conversion system that brings human-like naturalness to synthetic speech. 
+            Built on advanced AI architecture, it delivers expressive, clear, and lifelike voice synthesis for applications ranging from 
+            accessibility tools to creative content generation.
+          </p>
+          <p class="sub lang-he" lang="he">
+            MamreVoice הוא מערכת מתקדמת להמרת טקסט לדיבור והמרת קול המביאה טבעיות אנושית לדיבור סינתטי.
+            הוא בנוי על ארכיטקטורה מתקדמת של בינה מלאכותית ומספק סינתזת קול ביטויית, ברורה וחיה עבור יישומים
+            החל מכלי נגישות ועד יצירת תוכן יצירתי.
+          </p>
+        </div>
+      </section>
+
+      <!-- Model Explanation Section -->
+      <section class="about" id="about">
+        <div class="container">
+          <h2 class="lang-en">About the Model</h2>
+          <h2 class="lang-he" lang="he">על המודל</h2>
+          <div class="model-grid">
+            <div class="model-text">
+              <p class="lang-en">
+                MamreVoice is powered by DiffMamba, an innovative architecture that combines the efficiency of state-space models 
+                with the stability of diffusion processes. This hybrid approach enables high-quality voice synthesis with reduced 
+                computational overhead, making real-time voice conversion and text-to-speech possible on modern hardware.
+              </p>
+              <p class="lang-en">
+                The model excels in preserving prosody, maintaining speaker identity, and generating natural-sounding speech 
+                across multiple languages, with particular optimization for Hebrew language processing.
+              </p>
+              <p class="lang-he" lang="he">
+                MamreVoice מופעל על ידי DiffMamba, ארכיטקטורה חדשנית המשלבת את היעילות של מודלים של מרחב מצבים 
+                עם היציבות של תהליכי דיפוזיה. גישה היברידית זו מאפשרת סינתזת קול באיכות גבוהה עם עומס חישובי מופחת,
+                המאפשר המרת קול וטקסט לדיבור בזמן אמת על חומרה מודרנית.
+              </p>
+              <p class="lang-he" lang="he">
+                המודל מצטיין בשימור פרוזודיה, שמירה על זהות הדובר, ויצירת דיבור טבעי במספר שפות,
+                עם אופטימיזציה מיוחדת לעיבוד שפה עברית.
+              </p>
+              <p class="muted small lang-en">
+                Based on: <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zonos TTS</a> (using DiffMamba instead of regular Mamba)
+                · Research Paper: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">DiffMamba Paper</a>
+                · DiffMamba Blocks: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">GitHub</a>
+              </p>
+              <p class="muted small lang-en" style="margin-top:8px;">
+                🔗 <strong>Code:</strong> <a href="https://github.com/maxmelichov/Mamre-TTS" target="_blank" rel="noopener">github.com/maxmelichov/Mamre-TTS</a>
+                &nbsp;&nbsp;⚖️ <strong>Weights:</strong> <a href="https://huggingface.co/notmax123/MamreTTS" target="_blank" rel="noopener">huggingface.co/notmax123/MamreTTS</a>
+              </p>
+              <p class="muted small lang-he" lang="he">
+                מבוסס על: <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">Zonos TTS</a> (עם DiffMamba במקום Mamba רגיל)
+                · מאמר מחקר: <a href="https://arxiv.org/html/2507.06204v1" target="_blank" rel="noopener">מאמר DiffMamba</a>
+                · בלוקי DiffMamba: <a href="https://github.com/maxmelichov/DiffMamba" target="_blank" rel="noopener">GitHub</a>
+              </p>
+              <p class="muted small lang-he" lang="he" style="margin-top:8px;">
+                🔗 <strong>קוד:</strong> <a href="https://github.com/maxmelichov/Mamre-TTS" target="_blank" rel="noopener">github.com/maxmelichov/Mamre-TTS</a>
+                &nbsp;&nbsp;⚖️ <strong>משקולות:</strong> <a href="https://huggingface.co/notmax123/MamreTTS" target="_blank" rel="noopener">huggingface.co/notmax123/MamreTTS</a>
+              </p>
+            </div>
+            <div class="model-image">
+              <figure class="fig-card">
+                <img src="assets/diffmamba.PNG" alt="DiffMamba architecture" />
+                <figcaption class="muted small lang-en">DiffMamba Architecture</figcaption>
+                <figcaption class="muted small lang-he" lang="he">ארכיטקטורה של DiffMamba</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Name Origin Section -->
+      <section class="story">
+        <div class="container">
+          <h2 class="lang-en">Why "Mamre"?</h2>
+          <h2 class="lang-he" lang="he">למה "Mamre"?</h2>
+          <div class="story-grid">
+            <div class="card">
+              <h3 class="lang-en">A conversation, not a proclamation</h3>
+              <h3 class="lang-he" lang="he">שיחה אנושית, לא הצהרה מרוחקת</h3>
+              <p class="lang-en">
+                The name MamreVoice comes from the biblical story of Abraham at the oaks of Mamre (Genesis 18:1),
+                where the divine appears not as a distant voice from the heavens but as a simple, clear, human conversation.
+                This reflects our philosophy: technology should speak naturally, warmly, and authentically.
+              </p>
+              <p class="lang-he" lang="he">
+                השם MamreVoice מגיע מהסיפור התנ"כי על אברהם באלוני ממרא (בראשית י"ח, א).
+                במקום לדבר מהשמים, האלוהי מתגלה כשיחה פשוטה, ברורה ואנושית.
+                זה משקף את הפילוסופיה שלנו: טכנולוגיה צריכה לדבר באופן טבעי, חם ואותנטי.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Demo Video Section -->
+      <section class="demo-video" id="demo">
+        <div class="container">
+          <h2 class="lang-en">Demo Video</h2>
+          <h2 class="lang-he" lang="he">סרטון הדגמה</h2>
+          <div class="video-wrap" id="demoVideoWrap">
+            <video controls playsinline webkit-playsinline muted preload="metadata" poster="assets/logo.png" class="video" id="demoVideo">
+              <source src="recordings/Demo2Final.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <button class="fs-btn" id="btnDemoFullscreen" aria-label="Toggle fullscreen">⤢</button>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Phonikud Comparison Section -->
+      <section class="phonikud-comparison" id="comparison">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="lang-en">Model Comparison: Mamre vs Others</h2>
+            <h2 class="lang-he" lang="he">השוואת מודלים: ממרא מול אחרים</h2>
+          </div>
+          <div class="comparison-intro">
+            <div class="speed-info">
+              <p class="lang-en">
+                <strong>📊 Speaking Rate:</strong> Mamre uses <span class="speed-highlight">phoneme reading</span> with variable speaking rates. 
+                Scale: 5-20 (10 = normal speed).
+              </p>
+              <p class="lang-he" lang="he">
+                <strong>📊 קצב דיבור:</strong> ממרא משתמש ב<span class="speed-highlight">קריאת פונמות</span> עם קצבי דיבור משתנים. 
+                טווח: 5-20 (10 = מהירות רגילה).
+              </p>
+            </div>
+          </div>
+          
+          <div class="phonikud-table">
+            <div class="phonikud-row phonikud-header">
+              <div class="phonikud-cell"><strong class="lang-en">Hebrew Text</strong><strong class="lang-he" lang="he">טקסט עברי</strong></div>
+              <div class="phonikud-cell"><strong class="lang-en">Mamre <span class="speed-tag">rate 11.5</span></strong><strong class="lang-he" lang="he">ממרא <span class="speed-tag">קצב 11.5</span></strong></div>
+              <div class="phonikud-cell"><strong class="lang-en">Google TTS</strong><strong class="lang-he" lang="he">Google TTS</strong></div>
+              <div class="phonikud-cell"><strong class="lang-en">Phonikud</strong><strong class="lang-he" lang="he">פוניקוד</strong></div>
+              <div class="phonikud-cell"><strong class="lang-en">ElevenLabs</strong><strong class="lang-he" lang="he">ElevenLabs</strong></div>
+              <div class="phonikud-cell"><strong class="lang-en">RoboShaul</strong><strong class="lang-he" lang="he">RoboShaul</strong></div>
+            </div>
+            
+            <!-- Example 1 -->
+            <div class="phonikud-row">
+              <div class="phonikud-cell text-cell">
+                <div class="example-text">
+                  <p class="hebrew-text">"הוא צפה בס֫רט וראה חיה שצ֫פה במ֫ים 🐸"</p>
+                  <p class="translation lang-en">"He watched a movie and saw an animal that was watching the water 🐸"</p>
+                  <p class="translation lang-he" lang="he">"הוא צפה בסרט וראה חיה שצפתה במים 🐸"</p>
+                </div>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/mamre_1.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/google_1.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/phonikud_1.mp4" type="audio/mp4">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/eleven_1.mp3" type="audio/mp3">
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/roboshaul_1.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+            </div>
+
+            <!-- Example 2 -->
+            <div class="phonikud-row">
+              <div class="phonikud-cell text-cell">
+                <div class="example-text">
+                  <p class="hebrew-text">"הוא רצה את זה גם אבל היא ר֫צה מהר והקד֫ימה אותו 🏃‍♀️"</p>
+                  <p class="translation lang-en">"He wanted it too, but she ran fast and overtook him 🏃‍♀️"</p>
+                  <p class="translation lang-he" lang="he">"הוא רצה את זה גם, אבל היא רצה מהר והקדימה אותו 🏃‍♀️"</p>
+                </div>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/mamre_2.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/google_2.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/phonikud_2.mp4" type="audio/mp4">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/eleven_2.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/roboshaul_2.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+            </div>
+
+            <!-- Example 3 -->
+            <div class="phonikud-row">
+              <div class="phonikud-cell text-cell">
+                <div class="example-text">
+                  <p class="hebrew-text">"בוא תרד לאכול יש בור֫קס עם ת֫רד 🥬"</p>
+                  <p class="translation lang-en">"Come down to eat, there's burekas with chard 🥬"</p>
+                  <p class="translation lang-he" lang="he">"בוא תרד לאכול, יש בורקס עם תרד 🥬"</p>
+                </div>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/mamre_3.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/google_3.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/phonikud_3.mp4" type="audio/mp4">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/eleven_3.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+              <div class="phonikud-cell">
+                <audio controls preload="none" controlslist="nodownload">
+                  <source src="phonikud_examples/roboshaul_3.opus" type="audio/ogg; codecs=opus">
+                  <p class="audio-fallback">Your browser doesn't support this audio format.</p>
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <div class="comparison-note">
+            <p class="lang-en">
+              <strong>Note:</strong> Zonos is not included in the audio samples above — its output on these examples is nearly identical to Mamre's,
+              since Mamre is directly based on Zonos. The <a href="#metrics">metrics table below</a> quantifies the differences.
+            </p>
+            <p class="lang-he" lang="he">
+              <strong>הערה:</strong> Zonos אינו כלול בדוגמאות השמע למעלה — הפלט שלו על דוגמאות אלו כמעט זהה לזה של Mamre,
+              מכיוון ש-Mamre מבוסס ישירות על Zonos. <a href="#metrics">טבלת המדדים למטה</a> מכמתת את ההבדלים.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Accuracy / WER Metrics Section -->
+      <section class="metrics-section" id="metrics">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="lang-en">Accuracy &amp; WER Metrics</h2>
+            <h2 class="lang-he" lang="he">מדדי דיוק ו-WER</h2>
+          </div>
+          <p class="metrics-intro lang-en">
+            Evaluation on Hebrew phoneme-aware TTS. WER (Word Error Rate) and CER (Character Error Rate) measure transcription accuracy;
+            lower is better. Stress accuracy measures correct lexical stress placement; higher is better.
+          </p>
+          <p class="metrics-intro lang-he" lang="he">
+            הערכה על TTS עברי עם מודעות לפונמות. WER ו-CER מודדים דיוק תעתיק — נמוך יותר עדיף. דיוק הדגש מודד הנחת הדגש הלקסיקלי הנכון — גבוה יותר עדיף.
+          </p>
+          <div class="metrics-table-wrap">
+            <table class="metrics-table">
+              <thead>
+                <tr>
+                  <th>
+                    <span class="lang-en">Model</span>
+                    <span class="lang-he" lang="he">מודל</span>
+                  </th>
+                  <th>
+                    <span class="lang-en">Accuracy (WER)</span>
+                    <span class="lang-he" lang="he">דיוק (WER)</span>
+                  </th>
+                  <th>WER</th>
+                  <th>CER</th>
+                  <th>
+                    <span class="lang-en">Stress Accuracy</span>
+                    <span class="lang-he" lang="he">דיוק הדגש</span>
+                  </th>
+                  <th>
+                    <span class="lang-en">Stress WER</span>
+                    <span class="lang-he" lang="he">WER הדגש</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="metrics-row metrics-row--zonos">
+                  <td class="metrics-model-name">
+                    <a href="https://github.com/Zyphra/Zonos" target="_blank" rel="noopener">zonos-phonikud</a>
+                    <span class="metrics-lang-tag">Hebrew</span>
+                  </td>
+                  <td>
+                    <div class="metrics-bar-wrap">
+                      <div class="metrics-bar" style="--pct: 72%"></div>
+                      <span class="metrics-val">72.0%</span>
+                    </div>
+                  </td>
+                  <td><span class="metrics-num metrics-num--bad">0.280</span></td>
+                  <td><span class="metrics-num metrics-num--bad">0.107</span></td>
+                  <td>
+                    <div class="metrics-bar-wrap">
+                      <div class="metrics-bar" style="--pct: 82.5%"></div>
+                      <span class="metrics-val">82.5%</span>
+                    </div>
+                  </td>
+                  <td><span class="metrics-num metrics-num--mid">0.175</span></td>
+                </tr>
+                <tr class="metrics-row metrics-row--mamre">
+                  <td class="metrics-model-name">
+                    <a href="https://github.com/maxmelichov/Mamre-TTS" target="_blank" rel="noopener">mamre-phonikud</a>
+                    <span class="metrics-lang-tag metrics-lang-tag--brand">Hebrew</span>
+                  </td>
+                  <td>
+                    <div class="metrics-bar-wrap">
+                      <div class="metrics-bar metrics-bar--brand" style="--pct: 80.3%"></div>
+                      <span class="metrics-val metrics-val--brand">80.3%</span>
+                    </div>
+                  </td>
+                  <td><span class="metrics-num metrics-num--good">0.197</span></td>
+                  <td><span class="metrics-num metrics-num--good">0.060</span></td>
+                  <td>
+                    <div class="metrics-bar-wrap">
+                      <div class="metrics-bar metrics-bar--brand" style="--pct: 88.4%"></div>
+                      <span class="metrics-val metrics-val--brand">88.4%</span>
+                    </div>
+                  </td>
+                  <td><span class="metrics-num metrics-num--good">0.110</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="metrics-note lang-en">
+            <strong>Mamre</strong> outperforms Zonos across all metrics — <strong>+8.3 pp</strong> WER accuracy, <strong>44% lower</strong> CER, and <strong>+5.9 pp</strong> stress accuracy.
+          </p>
+          <p class="metrics-note lang-he" lang="he">
+            <strong>Mamre</strong> עולה על Zonos בכל המדדים — <strong>+8.3 נק'</strong> דיוק WER, CER <strong>נמוך ב-44%</strong>, ו<strong>+5.9 נק'</strong> דיוק הדגש.
+          </p>
+        </div>
+      </section>
+
+      <section class="voice-conversion" id="voice-conversion">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="lang-en">Voice conversion</h2>
+            <h2 class="lang-he" lang="he">המרת קול</h2>
+          </div>
+          <div class="speed-note">
+            <p class="lang-en">
+              <strong>⚡ Speaking Rate:</strong> All recordings below use speaking rate <span class="speed-highlight">9</span> 
+              (scale: 5-20, where 10 = normal speed)
+            </p>
+            <p class="lang-he" lang="he">
+              <strong>⚡ קצב דיבור:</strong> כל ההקלטות למטה משתמשות בקצב דיבור <span class="speed-highlight">9</span> 
+              (טווח: 5-20, כאשר 10 = מהירות רגילה)
+            </p>
+          </div>
+          <div class="vc-table">
+            <div class="vc-row vc-header">
+              <div class="vc-cell"><strong class="lang-en">Text</strong><strong class="lang-he" lang="he">טקסט</strong></div>
+              <div class="vc-cell"><strong class="lang-en">Target</strong><strong class="lang-he" lang="he">מטרה</strong></div>
+              <div class="vc-cell"><strong class="lang-en">Prediction</strong><strong class="lang-he" lang="he">חזוי</strong></div>
+            </div>
+            <div id="vc-body" class="vc-body"></div>
+          </div>
+
+        </div>
+      </section>
+
+      
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <p class="lang-en">© <span id="year"></span> MamreVoice & Phonikud</p>
+            <p class="lang-he" lang="he">© <span id="year-he"></span> MamreVoice & Phonikud</p>
+          </div>
+          <div class="footer-links">
+            <p class="footer-credit lang-en">Created by Maxim Melichov</p>
+            <p class="footer-credit lang-he" lang="he">נוצר על ידי מקסים מליכוב</p>
+            <div class="social-links">
+              <a href="https://github.com/maxmelichov" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/max-melichov/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://medium.com/@maxme006" target="_blank" rel="noopener" aria-label="Medium">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="notice">
+        <p class="lang-en">JavaScript is required for language switching and TTS preview.</p>
+        <p class="lang-he" lang="he">נדרש JavaScript כדי להחליף שפה ולהציג תצוגה מקדימה של הדיבור.</p>
+      </div>
+    </noscript>
+  </body>
+  <!--
+    Built as a static site. To preview locally, serve this folder (e.g., `python3 -m http.server`).
+  -->
+</html>
