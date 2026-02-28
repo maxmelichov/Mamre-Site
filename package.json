@@ -1,0 +1,31 @@
+{
+  "name": "maxmelichov_site",
+  "version": "1.0.0",
+  "description": "Static website for \"MamreVoice\" — a simple, clear and human text-to-speech experience.",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxmelichov/Mamre-Site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/maxmelichov/Mamre-Site/issues"
+  },
+  "homepage": "https://github.com/maxmelichov/Mamre-Site#readme",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "vite": "^7.3.1"
+  }
+}
